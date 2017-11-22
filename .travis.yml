@@ -1,0 +1,6 @@
+script:
+  - npm install -g sfdx-cli
+  - sfdx force:auth:sfdxurl:store -f <(echo $SFDX_AUTH_URL) -a ci-devhub -d
+  - sfdx force:org:create -f config/project-scratch-def.json -s
+  - sfdx force:source:push
+  - sfdx force:apex:execute -f anonymous-apex-library-test.apex
