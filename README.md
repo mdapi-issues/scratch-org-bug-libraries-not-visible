@@ -18,3 +18,9 @@ $ sfdx force:apex:execute -f anonymous-apex-library-test.apex
 $ sfdx force:source:push
 $ sfdx force:apex:test:run -l RunLocalTests -r human --wait 60
 ```
+
+## Workaround
+
+Thankfully the Salesforce Partner Support provided a workaround.
+
+In the `config/project-scratch-def.json` file add `"hasSampleData": true`.
