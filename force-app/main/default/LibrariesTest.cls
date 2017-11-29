@@ -2,8 +2,8 @@
 private with sharing class LibrariesTest {
 
     @isTest static void test_create_and_query_library_by_name() {
-        insert new ContentWorkspace(Name='Bar');
-        List<ContentWorkspace> results = [SELECT Id FROM ContentWorkspace WHERE Name = 'Foo'];
+        insert new ContentWorkspace(Name='Bazn');
+        List<ContentWorkspace> results = [SELECT Id FROM ContentWorkspace WHERE Name = 'Bazn'];
         System.assertEquals(1, results.size(), 'Could not query newly created ContentWorkspace');
     }
 
