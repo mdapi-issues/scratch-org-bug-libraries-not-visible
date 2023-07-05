@@ -2,8 +2,6 @@
 
 > After creating a Library (`ContentWorkspace`) in a scratch org, the Library is not shown in "My Libraries" and cannot be queried using SOQL.
 
-[![Build Status](https://travis-ci.org/amtrack/sfdx-libraries-not-visible-mwe.svg?branch=master)](https://travis-ci.org/amtrack/sfdx-libraries-not-visible-mwe)
-
 ## Reproduction
 
 See gif (newly-created-library-not-visible.gif)
@@ -13,11 +11,15 @@ See gif (newly-created-library-not-visible.gif)
 Or create a scratch org and run anonymous apex or/and unit tests:
 
 ```console
-$ sfdx force:org:create -f config/project-scratch-def.json -s
-$ sfdx force:apex:execute -f anonymous-apex-library-test.apex
-$ sfdx force:source:push
-$ sfdx force:apex:test:run -l RunLocalTests -r human --wait 60
+$ sfdx org create scratch -f config/project-scratch-def.json -a mre-libraries-not-visible -d
+$ sfdx apex run -f anonymous-apex-library-test.apex
+$ sfdx project deploy start
+$ sfdx apex run test -l RunLocalTests -w 10
 ```
+
+[![Actions Status](https://github.com/mdapi-issues/scratch-org-bug-libraries-not-visible/workflows/Reproduce%20issue/badge.svg)](https://github.com/mdapi-issues/scratch-org-bug-libraries-not-visible/actions)
+
+> Failing here means the reproduction was successful
 
 ## Workaround
 
